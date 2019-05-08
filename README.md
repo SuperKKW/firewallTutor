@@ -180,6 +180,14 @@ ShadowsocksR 一键管理脚本脚本 [v2.0.35]
 
 安装完成之后会显示服务器配置信息。包括ip、端口、密码、加密、协议、混淆等。当然这些都没必要记下来（如果Linux客户端应该是要手动输入的），配置客户端的时候只需要Xshell最下面出现的<span id = "SSR链接">***SSR链接***</span>即可。
 
+## 如果出现启动失败的情况，进行以下操作安装libsolium库即可
+yum -y groupinstall "Development Tools"
+wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz
+tar xf libsodium-1.0.11.tar.gz && cd libsodium-1.0.11
+./configure && make -j2 && make install
+echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf
+ldconfig
+
 ## 3.6 安装BBR和封禁垃圾端口
 
 运行bash ssr.sh命令后输入14即可进入安装BBR和封禁垃圾端口的界面。这两个都按提示部署一下即可，注意BBR安装的时候可能会提示“是否终止卸载内核”，这是系统检测到使用了权限较高的操作，因为BBR需要更换内核，所以我们要选择NO。BBR是google开发的拥塞控制算法，亲测有效，安装之后google秒开，不安装延时相当大。
