@@ -182,10 +182,15 @@ ShadowsocksR 一键管理脚本脚本 [v2.0.35]
 
 ## 如果出现启动失败的情况，进行以下操作安装libsolium库即可
 yum -y groupinstall "Development Tools"
+
 wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz
+
 tar xf libsodium-1.0.11.tar.gz && cd libsodium-1.0.11
+
 ./configure && make -j2 && make install
+
 echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf
+
 ldconfig
 
 ## 3.6 安装BBR和封禁垃圾端口
